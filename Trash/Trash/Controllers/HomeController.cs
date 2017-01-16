@@ -26,5 +26,11 @@ namespace Trash.Controllers
 
             return View();
         }
+        public ActionResult Fees()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
