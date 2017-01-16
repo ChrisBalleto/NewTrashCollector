@@ -32,5 +32,7 @@ namespace Trash.Models
         public int MembershipTypeId { get; set; }
 
         public DateTime StartDate { get; set; }
+
+
     }
 }
