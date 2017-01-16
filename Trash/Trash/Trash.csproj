@@ -187,10 +187,44 @@
     <Compile Include="Migrations\201701161614166_initialMigration.Designer.cs">
       <DependentUpon>201701161614166_initialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701161621151_ModelProps.cs" />
+    <Compile Include="Migrations\201701161621151_ModelProps.Designer.cs">
+      <DependentUpon>201701161621151_ModelProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161622379_update.cs" />
+    <Compile Include="Migrations\201701161622379_update.Designer.cs">
+      <DependentUpon>201701161622379_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161630346_AddedDatabase.cs" />
+    <Compile Include="Migrations\201701161630346_AddedDatabase.Designer.cs">
+      <DependentUpon>201701161630346_AddedDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161632566_SeedMembershipTypesAndDaysOfWeek.cs" />
+    <Compile Include="Migrations\201701161632566_SeedMembershipTypesAndDaysOfWeek.Designer.cs">
+      <DependentUpon>201701161632566_SeedMembershipTypesAndDaysOfWeek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161653407_PopulatemembershipTypes.cs" />
+    <Compile Include="Migrations\201701161653407_PopulatemembershipTypes.Designer.cs">
+      <DependentUpon>201701161653407_PopulatemembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161700092_PutDayOfWeekinCustomer.cs" />
+    <Compile Include="Migrations\201701161700092_PutDayOfWeekinCustomer.Designer.cs">
+      <DependentUpon>201701161700092_PutDayOfWeekinCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161700552_membershipTypes.cs" />
+    <Compile Include="Migrations\201701161700552_membershipTypes.Designer.cs">
+      <DependentUpon>201701161700552_membershipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DayOfWeekPickUp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Vacation.cs" />
+    <Compile Include="Models\Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -264,6 +298,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701161614166_initialMigration.resx">
       <DependentUpon>201701161614166_initialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161621151_ModelProps.resx">
+      <DependentUpon>201701161621151_ModelProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161622379_update.resx">
+      <DependentUpon>201701161622379_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161630346_AddedDatabase.resx">
+      <DependentUpon>201701161630346_AddedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161632566_SeedMembershipTypesAndDaysOfWeek.resx">
+      <DependentUpon>201701161632566_SeedMembershipTypesAndDaysOfWeek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161653407_PopulatemembershipTypes.resx">
+      <DependentUpon>201701161653407_PopulatemembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161700092_PutDayOfWeekinCustomer.resx">
+      <DependentUpon>201701161700092_PutDayOfWeekinCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161700552_membershipTypes.resx">
+      <DependentUpon>201701161700552_membershipTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,6 +20,12 @@ namespace Trash.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Worker> Workers { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Vacation> Vacations { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
