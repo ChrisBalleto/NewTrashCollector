@@ -16,10 +16,16 @@ namespace Trash.Models
 
         public string StreetThree { get; set; }
 
-        public string City { get; set; }
+        public City City { get; set; }
 
-        public string State { get; set; }
+        public string CityId { get; set; }
 
-        public int ZipCode { get; set; }
+        public State State { get; set; }
+
+        public string StateId { get; set; }
+
+        public Zipcode Zipcode { get; set; }
+        [Required]
+        public int ZipcodeId { get; set; }
     }
 }

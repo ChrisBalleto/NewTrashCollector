@@ -181,6 +181,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WorkerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,16 +217,39 @@
     <Compile Include="Migrations\201701161700552_membershipTypes.Designer.cs">
       <DependentUpon>201701161700552_membershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701161953270_StateZipCity.cs" />
+    <Compile Include="Migrations\201701161953270_StateZipCity.Designer.cs">
+      <DependentUpon>201701161953270_StateZipCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162006389_SeedStateZipCity.cs" />
+    <Compile Include="Migrations\201701162006389_SeedStateZipCity.Designer.cs">
+      <DependentUpon>201701162006389_SeedStateZipCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162007133_SeedStateCityZipReal.cs" />
+    <Compile Include="Migrations\201701162007133_SeedStateCityZipReal.Designer.cs">
+      <DependentUpon>201701162007133_SeedStateCityZipReal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162018441_seedCity.cs" />
+    <Compile Include="Migrations\201701162018441_seedCity.Designer.cs">
+      <DependentUpon>201701162018441_seedCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162019420_seedZip.cs" />
+    <Compile Include="Migrations\201701162019420_seedZip.Designer.cs">
+      <DependentUpon>201701162019420_seedZip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DayOfWeekPickUp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\Vacation.cs" />
     <Compile Include="Models\Worker.cs" />
+    <Compile Include="Models\Zipcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
@@ -289,10 +313,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Worker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -326,6 +352,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701161700552_membershipTypes.resx">
       <DependentUpon>201701161700552_membershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161953270_StateZipCity.resx">
+      <DependentUpon>201701161953270_StateZipCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162006389_SeedStateZipCity.resx">
+      <DependentUpon>201701162006389_SeedStateZipCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162007133_SeedStateCityZipReal.resx">
+      <DependentUpon>201701162007133_SeedStateCityZipReal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162018441_seedCity.resx">
+      <DependentUpon>201701162018441_seedCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162019420_seedZip.resx">
+      <DependentUpon>201701162019420_seedZip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

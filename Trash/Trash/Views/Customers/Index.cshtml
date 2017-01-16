@@ -5,6 +5,7 @@
 }
 
 <h2>Customers</h2>
+@Html.ActionLink("New Customer", "New", null, new { @class = "btn btn-primary" })
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
@@ -16,7 +17,7 @@ else
         <thead>
             <tr>
                 <th>Customers</th>
-                <th>Membership Type</th>
+                <th>ZipCode</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +25,7 @@ else
             {
                 <tr>
                     <td>@Html.ActionLink(customer.LastName, "Edit", "Customers", new { Id = customer.Id }, null) </td>
-                    <td>@customer.MembershipType.MembershipName </td>
+                    <td>@customer.Address.Zipcode </td>
                 </tr>
             }
         </tbody>

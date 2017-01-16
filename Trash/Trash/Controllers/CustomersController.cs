@@ -23,10 +23,11 @@ namespace Trash.Controllers
             _context.Dispose();
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
 
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+
             return View(customers);
         }
         public ActionResult Edit(int id)
@@ -39,6 +40,26 @@ namespace Trash.Controllers
             {
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", viewModel);
+        }
+        public ActionResult New()
+        {
+            var state = _context.States.ToList();
+            var city = _context.Cities.ToList();
+            var zipcode = _context.Zipcodes.ToList();
+            var dayOfWeekPickUp = _context.DayOfWeekPickUps.ToList();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = new Customer(),
+                Address = new Address(),
+                MembershipTypes = membershipTypes,
+                States = state,
+                Cities = city,
+                Zipcodes = zipcode,
+                DayOfWeekPickUps = dayOfWeekPickUp
+
             };
             return View("CustomerForm", viewModel);
         }

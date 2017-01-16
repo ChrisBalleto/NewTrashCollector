@@ -25,6 +25,10 @@ namespace Trash.Models
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Zipcode> Zipcodes { get; set; }
+        public DbSet<DayOfWeekPickUp> DayOfWeekPickUps { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
