@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Trash.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+else
+
+{
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Customers</th>
+                <th>Membership Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.LastName, "Edit", "Customers", new { Id = customer.Id }, null) </td>
+                    <td>@customer.MembershipType.MembershipName </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
