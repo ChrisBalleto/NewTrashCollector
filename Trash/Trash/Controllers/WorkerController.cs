@@ -96,5 +96,9 @@ namespace Trash.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Workers");
         }
+        public ActionResult Route()
+        {
+            return View();
+        }
     }
 }
