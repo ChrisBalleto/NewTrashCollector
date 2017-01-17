@@ -1,0 +1,31 @@
+﻿@model Trash.ViewModels.WorkerFormViewModel
+@{
+    ViewBag.Title = "WorkerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>WorkerForm</h2>
+
+<h2>New Employee</h2>
+
+@using (Html.BeginForm("Save", "Worker"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Worker.FirstName)
+        @Html.TextBoxFor(m => m.Worker.FirstName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Worker.LastName)
+        @Html.TextBoxFor(m => m.Worker.LastName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Worker.EmailAddress)
+        @Html.TextBoxFor(m => m.Worker.EmailAddress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Worker.WorkerZipCodes)
+        @Html.DropDownListFor(m => m.Customer.Address.CityId, new SelectList(Model.Cities, "Id", "CityName"), "Choose City", new { @class = "form-control" })
+    </div>
+}
+
+    
