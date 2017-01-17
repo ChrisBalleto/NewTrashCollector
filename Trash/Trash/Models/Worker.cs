@@ -16,6 +16,8 @@ namespace Trash.Models
 
         public string EmailAddress { get; set; }
 
-        public List<int> WorkerZipCodes { get; set; }
+        public Zipcode ZipcodeTerritory { get; set; }
+
+        public int ZipcodeTerritoryId { get; set; }
     }
 }

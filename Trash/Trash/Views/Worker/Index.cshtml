@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Trash.Models.Worker>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>GYJ Employees</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any Employees</p>
+}
+else
+
+{
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Employee Last Name</th>
+                <th>Employee First Name</th>
+                <th>Territory Zip-Codes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var worker in Model)
+            {
+                <tr>
+                    <td>@worker.LastName</td>
+                    <td>@worker.FirstName</td>
+                    <td>@worker.ZipcodeTerritory.ZipcodeNum</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

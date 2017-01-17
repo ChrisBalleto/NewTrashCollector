@@ -249,6 +249,14 @@
     <Compile Include="Migrations\201701162319583_removestreetthree.Designer.cs">
       <DependentUpon>201701162319583_removestreetthree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701171513161_i.cs" />
+    <Compile Include="Migrations\201701171513161_i.Designer.cs">
+      <DependentUpon>201701171513161_i.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701171637065_zipcodeTerritory.cs" />
+    <Compile Include="Migrations\201701171637065_zipcodeTerritory.Designer.cs">
+      <DependentUpon>201701171637065_zipcodeTerritory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -265,6 +273,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\RouteViewModel.cs" />
+    <Compile Include="ViewModels\WorkerFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-Trash-20170116100457.mdf" />
@@ -336,6 +346,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Home\Fees.cshtml" />
+    <Content Include="Views\Worker\Index.cshtml" />
+    <Content Include="Views\Worker\WorkerForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -394,6 +406,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701162319583_removestreetthree.resx">
       <DependentUpon>201701162319583_removestreetthree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171513161_i.resx">
+      <DependentUpon>201701171513161_i.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171637065_zipcodeTerritory.resx">
+      <DependentUpon>201701171637065_zipcodeTerritory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
