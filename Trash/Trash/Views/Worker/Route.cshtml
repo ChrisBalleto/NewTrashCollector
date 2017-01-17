@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Trash.Models.Worker>
+@{
+    ViewBag.Title = "Route";
+}
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <center>
+    <h3>Customers Route</h3>
+    </center>
+
+<div id="right-panel">
+    <div>
+        <b>Start Location:</b>
+        <select id="start">
+            <option value="333 N Plankinton Ave, 53203">GYJ Enterprise</option>
+        </select>
+        <b>Customers Location</b> 
+        
+        <select multiple id="waypoints">
+            <option value="1238 E brady street, 53202">Customer One</option>
+            <option value="1728 N Humboldt Ave, 53202">Customer Two</option>
+            <option value="1101 E Brady St, 53202">Customer Three</option>
+            <option value="1759 N Franklin, 53202">Customer Four</option>
+        </select>
+
+        <b>End:</b>
+        <select id="end">
+            <option value="333 N Plankinton Ave, 53203">GYJ Enterprise</option>
+            <option value="1238 E brady street, 53202">Customer One</option>
+            <option value="1728 N Humboldt Ave, 53202">Customer Two</option>
+            <option value="1101 E Brady St, 53202">Customer Three</option>
+            <option value="1759 N Franklin, 53202">Customer Four</option>
+>
+        </select>
+        <input type="submit" id="submit">
+    </div>
+    <div id="directions-panel"></div>
+</div>
+    
+<div id="map"></div>
+
+
+<script>
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: { lat: 43.034134, lng: -87.911953 }
+        });
+        directionsDisplay.setMap(map);
+
+        document.getElementById('submit').addEventListener('click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var waypts = [];
+        var checkboxArray = document.getElementById('waypoints');
+        for (var i = 0; i < checkboxArray.length; i++) {
+          if (checkboxArray.options[i].selected) {
+            waypts.push({
+              location: checkboxArray[i].value,
+              stopover: true
+            });
+          }
+        }
+
+        directionsService.route({
+          origin: document.getElementById('start').value,
+          destination: document.getElementById('end').value,
+          waypoints: waypts,
+          optimizeWaypoints: true,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+            var summaryPanel = document.getElementById('directions-panel');
+            summaryPanel.innerHTML = '';
+            // For each route, display summary information.
+           
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+</script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV0gCnSnayqvb58qEV_x0Xodws1wtlaIc&callback=initMap">
+    </script>
+
+

@@ -361,6 +361,7 @@
     <Content Include="Views\Worker\Index.cshtml" />
     <Content Include="Views\Worker\WorkerForm.cshtml" />
     <Content Include="Views\Worker\Territory.cshtml" />
+    <Content Include="Views\Worker\Route.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

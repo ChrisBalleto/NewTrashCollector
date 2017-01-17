@@ -113,5 +113,9 @@ namespace Trash.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Worker");
         }
+        public ActionResult Route()
+        {
+            return View();
+        }
     }
 }
