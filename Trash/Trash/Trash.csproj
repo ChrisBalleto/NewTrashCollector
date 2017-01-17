@@ -257,6 +257,18 @@
     <Compile Include="Migrations\201701171637065_zipcodeTerritory.Designer.cs">
       <DependentUpon>201701171637065_zipcodeTerritory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701172014200_ZipToString.cs" />
+    <Compile Include="Migrations\201701172014200_ZipToString.Designer.cs">
+      <DependentUpon>201701172014200_ZipToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701172227164_concataddress.cs" />
+    <Compile Include="Migrations\201701172227164_concataddress.Designer.cs">
+      <DependentUpon>201701172227164_concataddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701172325139_gh.cs" />
+    <Compile Include="Migrations\201701172325139_gh.Designer.cs">
+      <DependentUpon>201701172325139_gh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -348,6 +360,7 @@
     <Content Include="Views\Home\Fees.cshtml" />
     <Content Include="Views\Worker\Index.cshtml" />
     <Content Include="Views\Worker\WorkerForm.cshtml" />
+    <Content Include="Views\Worker\Territory.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -412,6 +425,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701171637065_zipcodeTerritory.resx">
       <DependentUpon>201701171637065_zipcodeTerritory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701172014200_ZipToString.resx">
+      <DependentUpon>201701172014200_ZipToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701172227164_concataddress.resx">
+      <DependentUpon>201701172227164_concataddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701172325139_gh.resx">
+      <DependentUpon>201701172325139_gh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

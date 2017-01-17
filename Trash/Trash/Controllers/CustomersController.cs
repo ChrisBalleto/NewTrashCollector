@@ -46,9 +46,10 @@ namespace Trash.Controllers
             var customers = _context.Customers.Include(m => m.Address.Zipcode).ToList();
             return View(customers);
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int addressId)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var address = _context.Addresses.SingleOrDefault(c => c.Id == addressId);
 
             if (customer == null)
                 return HttpNotFound();
@@ -89,41 +90,41 @@ namespace Trash.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    var viewModel = new CustomerFormViewModel
-            //    {
-            //        Customer = customer,
-            //        Address = customer.Address,
-            //        Cities = _context.Cities.ToList(),
-            //        Zipcodes = _context.Zipcodes.ToList(),
-            //        DayOfWeekPickUps = _context.DayOfWeekPickUps.ToList(),
-            //        States = _context.States.ToList(),
-            //        MembershipTypes = _context.MembershipTypes.ToList()
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    Address = customer.Address,
+                    Cities = _context.Cities.ToList(),
+                    Zipcodes = _context.Zipcodes.ToList(),
+                    DayOfWeekPickUps = _context.DayOfWeekPickUps.ToList(),
+                    States = _context.States.ToList(),
+                    MembershipTypes = _context.MembershipTypes.ToList()
 
-            //    };
+                };
 
-            //    return View("CustomerForm", viewModel);
-            //}
+                return View("CustomerForm", viewModel);
+            }
 
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                var customerInDb = _context.Customers.Include(m => m.Address).Single(c => c.Id == customer.Id);
 
-                TryUpdateModel(customerInDb);   //Malicious users can mess-up database
-                //customerInDb.FirstName = customer.FirstName;
-                //customerInDb.LastName = customer.LastName;
-                //customerInDb.Address = customer.Address;
-                //customerInDb.Address.City = customer.Address.City;
-                //customerInDb.Address.ZipcodeId = customer.Address.ZipcodeId;
-                //customerInDb.Address.StateId = customer.Address.StateId;
-                //customerInDb.DayOfWeekPickUpId = customer.DayOfWeekPickUpId;
-                //customerInDb.MembershipTypeId = customer.MembershipTypeId;
-                //customerInDb.IsCurrentCustomer = customer.IsCurrentCustomer;
-                //customerInDb.StartDate = customer.StartDate;
-                //customerInDb.EMailAddress = customer.EMailAddress;
+                /*TryUpdateModel(customerInDb); */  //Malicious users can mess-up database
+                customerInDb.FirstName = customer.FirstName;
+                customerInDb.LastName = customer.LastName;
+                customerInDb.Address = customer.Address;
+                customerInDb.Address.City = customer.Address.City;
+                customerInDb.Address.ZipcodeId = customer.Address.ZipcodeId;
+                customerInDb.Address.StateId = customer.Address.StateId;
+                customerInDb.DayOfWeekPickUpId = customer.DayOfWeekPickUpId;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsCurrentCustomer = customer.IsCurrentCustomer;
+                customerInDb.StartDate = customer.StartDate;
+                customerInDb.EMailAddress = customer.EMailAddress;
                 //Or use AutoMapper
             }
             _context.SaveChanges();

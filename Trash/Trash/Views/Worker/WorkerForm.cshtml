@@ -4,11 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>WorkerForm</h2>
-
 <h2>New Employee</h2>
 
-@using (Html.BeginForm("New", "Worker"))
+@using (Html.BeginForm("Save", "Worker"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Worker.FirstName)

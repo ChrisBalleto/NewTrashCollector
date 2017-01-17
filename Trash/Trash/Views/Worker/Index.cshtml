@@ -4,6 +4,8 @@
 }
 
 <h2>GYJ Employees</h2>
+@Html.ActionLink("Add Employee", "New", null, new { @class = "btn btn-primary" })
+
 @if (!Model.Any())
 {
     <p>We don't have any Employees</p>
@@ -16,7 +18,7 @@ else
             <tr>
                 <th>Employee Last Name</th>
                 <th>Employee First Name</th>
-                <th>Territory Zip-Codes</th>
+                <th>Territory Zip-Code</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +27,7 @@ else
                 <tr>
                     <td>@worker.LastName</td>
                     <td>@worker.FirstName</td>
-                    <td>@worker.ZipcodeTerritory.ZipcodeNum</td>
+                    <td>@Html.ActionLink(worker.ZipcodeTerritory.ZipcodeNum, "Territory", "Worker", new { id = worker.ZipcodeTerritoryId}, null) </td>
                 </tr>
             }
         </tbody>

@@ -33,6 +33,8 @@ namespace Trash.Models
 
         public DateTime StartDate { get; set; }
 
+        public string ConcatAddress { get; set; }
+
 
     }
 }

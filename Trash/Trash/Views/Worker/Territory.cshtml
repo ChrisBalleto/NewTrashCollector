@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Trash.Models.Customer>
+@{
+    ViewBag.Title = "Territory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Territory</h2>
+
+@if (!Model.Any())
+{
+    <p>There are no Customers on this Route</p>
+}
+else
+{
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Customer Last Name</th>
+                <th>Street 1</th>
+                <th>Street 2</th>
+                <th>Zip-Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.LastName</td>
+                    <td>@customer.Address.StreetOne</td>
+                    <td>@customer.Address.StreetTwo</td>
+                    <td>@customer.Address.Zipcode.ZipcodeNum</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

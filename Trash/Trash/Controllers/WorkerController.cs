@@ -27,6 +27,30 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
+        public ActionResult Territory(int? zipId)
+        {
+            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
+
+            var customers = temporaryCustomers;
+            var customerz = new List<Customer>();
+            foreach (var customer in customers)
+            {
+                if (customer.Address.ZipcodeId == zipId)
+                {
+                    customerz.Add(customer);
+                }
+            }
+
+
+            //customer.ConcatAddress = customer.Address.StreetOne + " " + customer.Address.StreetTwo + " " + customer.Address.City.CityName + "," + customer.Address.State.StateName + " " + customer.Address.Zipcode.ZipcodeNum;
+            //var viewModel = new RouteViewModel
+            //{
+            //    WorkerZip = zipId,
+            //    Customer = customers,
+
+            //};
+            return View(customers);
+        }
         public ActionResult New()
         {
             var zipcode = _context.Zipcodes.ToList();
@@ -52,39 +76,32 @@ namespace Trash.Controllers
             return View("WorkerForm", viewModel);
         }
 
-
         [HttpPost]
-        public ActionResult Save(Worker worker, Zipcode zipcode)
+        public ActionResult Save(Worker worker)
         {
             //if (!ModelState.IsValid)
             //{
-            //    var viewModel = new CustomerFormViewModel
+            //    var viewModel = new WorkerFormViewModel
             //    {
-            //        Customer = customer,
-            //        Address = customer.Address,
-            //        Cities = _context.Cities.ToList(),
-            //        Zipcodes = _context.Zipcodes.ToList(),
-            //        DayOfWeekPickUps = _context.DayOfWeekPickUps.ToList(),
-            //        States = _context.States.ToList(),
-            //        MembershipTypes = _context.MembershipTypes.ToList()
-
+            //        Worker = worker,
+            //        ZipCodes = _context.Zipcodes.ToList(),                                   
             //    };
 
-            //    return View("CustomerForm", viewModel);
+            //    return View("WorkerForm", viewModel);
             //}
 
             if (worker.Id == 0)
                 _context.Workers.Add(worker);
             else
             {
-                var workerInDb = _context.Customers.Single(c => c.Id == worker.Id);
+                var workerInDb = _context.Workers.Include(m => m.ZipcodeTerritory).Single(c => c.Id == worker.Id);
 
-                TryUpdateModel(workerInDb);   //Malicious users can mess-up database
-                //customerInDb.FirstName = customer.FirstName;
-                //customerInDb.LastName = customer.LastName;
+                /*TryUpdateModel(workerInDb); */  //Malicious users can mess-up database
+                workerInDb.FirstName = worker.FirstName;
+                workerInDb.LastName = worker.LastName;
                 //customerInDb.Address = customer.Address;
                 //customerInDb.Address.City = customer.Address.City;
-                //customerInDb.Address.ZipcodeId = customer.Address.ZipcodeId;
+                workerInDb.ZipcodeTerritoryId = worker.ZipcodeTerritoryId;
                 //customerInDb.Address.StateId = customer.Address.StateId;
                 //customerInDb.DayOfWeekPickUpId = customer.DayOfWeekPickUpId;
                 //customerInDb.MembershipTypeId = customer.MembershipTypeId;
@@ -94,7 +111,7 @@ namespace Trash.Controllers
                 //Or use AutoMapper
             }
             _context.SaveChanges();
-            return RedirectToAction("Index", "Workers");
+            return RedirectToAction("Index", "Worker");
         }
     }
 }
