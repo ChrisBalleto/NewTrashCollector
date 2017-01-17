@@ -29,28 +29,29 @@
         @Html.TextBoxFor(m => m.Customer.Address.StreetTwo, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Address.City)
-        @Html.DropDownListFor(m => m.Customer.Address.City, new SelectList(Model.Cities, "Id", "CityName"), "Choose City" , new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.Address.CityId)
+        @Html.DropDownListFor(m => m.Customer.Address.CityId, new SelectList(Model.Cities, "Id", "CityName"), "Choose City" , new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Address.State)
-        @Html.DropDownListFor(m => m.Customer.Address.State, new SelectList(Model.States, "Id", "StateName"), "Choose State", new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.Address.StateId)
+        @Html.DropDownListFor(m => m.Customer.Address.StateId, new SelectList(Model.States, "Id", "StateName"), "Choose State", new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Address.Zipcode)
-        @Html.DropDownListFor(m => m.Customer.Address.Zipcode, new SelectList(Model.Zipcodes, "Id", "ZipcodeNum"), "Choose ZIP", new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.Address.ZipcodeId)
+        @Html.DropDownListFor(m => m.Customer.Address.ZipcodeId, new SelectList(Model.Zipcodes, "Id", "ZipcodeNum"), "Choose ZIP", new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.MembershipTypeId)
         @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "MembershipName"), "Select Membership Type", new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.DayOfWeekPickUp)
-        @Html.DropDownListFor(m => m.Customer.DayOfWeekPickUp, new SelectList(Model.DayOfWeekPickUps, "Id", "DayOfWeek"), "Select Pick-up Day", new { @class = "form-control" })
+        @Html.LabelFor(m => m.Customer.DayOfWeekPickUpId)
+        @Html.DropDownListFor(m => m.Customer.DayOfWeekPickUpId, new SelectList(Model.DayOfWeekPickUps, "Id", "DayOfWeek"), "Select Pick-up Day", new { @class = "form-control" })
     </div>
     <div>
         <label>
             @Html.LabelFor(m => m.Customer.StartDate)
+            @Html.TextBoxFor(m => m.Customer.StartDate, new { @class = "form-control" })
         </label>
     </div>
     <div class="checkbox">

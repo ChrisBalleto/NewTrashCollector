@@ -241,6 +241,14 @@
     <Compile Include="Migrations\201701162144555_startdate.Designer.cs">
       <DependentUpon>201701162144555_startdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701162312095_zipnotrequired.cs" />
+    <Compile Include="Migrations\201701162312095_zipnotrequired.Designer.cs">
+      <DependentUpon>201701162312095_zipnotrequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701162319583_removestreetthree.cs" />
+    <Compile Include="Migrations\201701162319583_removestreetthree.Designer.cs">
+      <DependentUpon>201701162319583_removestreetthree.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -375,6 +383,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701162144555_startdate.resx">
       <DependentUpon>201701162144555_startdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162312095_zipnotrequired.resx">
+      <DependentUpon>201701162312095_zipnotrequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701162319583_removestreetthree.resx">
+      <DependentUpon>201701162319583_removestreetthree.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

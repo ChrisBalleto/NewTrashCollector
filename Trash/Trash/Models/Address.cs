@@ -14,8 +14,6 @@ namespace Trash.Models
 
         public string StreetTwo { get; set; }
 
-        public string StreetThree { get; set; }
-
         public City City { get; set; }
 
         public string CityId { get; set; }
@@ -23,9 +21,9 @@ namespace Trash.Models
         public State State { get; set; }
 
         public string StateId { get; set; }
-
+        
         public Zipcode Zipcode { get; set; }
-        [Required]
+        
         public int ZipcodeId { get; set; }
     }
 }

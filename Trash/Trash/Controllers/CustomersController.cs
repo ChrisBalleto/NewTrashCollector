@@ -23,11 +23,27 @@ namespace Trash.Controllers
             _context.Dispose();
         }
 
+        //public ViewResult Index(int id, int zipCodeId)
+        //{
+
+        //    var customers = _context.Customers.SingleOrDefault(c => c.Id == id);
+        //    //var zipCode = _context.Zipcodes.SingleOrDefault(c => c.Id == zipCodeId)
+
+        //    var viewModel = new CustomerFormViewModel
+        //    {
+        //        Customer = customers,
+        //        //Zipcodes = zipCode
+
+        //    };
+
+
+
+        //    return View(viewModel);
+        //}
+
         public ViewResult Index()
         {
-
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-
+            var customers = _context.Customers.Include(m => m.Address.Zipcode).ToList();
             return View(customers);
         }
         public ActionResult Edit(int id)
@@ -39,7 +55,13 @@ namespace Trash.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
-                MembershipTypes = _context.MembershipTypes.ToList()
+                Address = customer.Address,
+                Cities = _context.Cities,
+                Zipcodes = _context.Zipcodes,
+                DayOfWeekPickUps = _context.DayOfWeekPickUps,
+                States = _context.States,
+                MembershipTypes = _context.MembershipTypes
+                
             };
             return View("CustomerForm", viewModel);
         }
@@ -63,5 +85,50 @@ namespace Trash.Controllers
             };
             return View("CustomerForm", viewModel);
         }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    var viewModel = new CustomerFormViewModel
+            //    {
+            //        Customer = customer,
+            //        Address = customer.Address,
+            //        Cities = _context.Cities.ToList(),
+            //        Zipcodes = _context.Zipcodes.ToList(),
+            //        DayOfWeekPickUps = _context.DayOfWeekPickUps.ToList(),
+            //        States = _context.States.ToList(),
+            //        MembershipTypes = _context.MembershipTypes.ToList()
+
+            //    };
+
+            //    return View("CustomerForm", viewModel);
+            //}
+
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                TryUpdateModel(customerInDb);   //Malicious users can mess-up database
+                //customerInDb.FirstName = customer.FirstName;
+                //customerInDb.LastName = customer.LastName;
+                //customerInDb.Address = customer.Address;
+                //customerInDb.Address.City = customer.Address.City;
+                //customerInDb.Address.ZipcodeId = customer.Address.ZipcodeId;
+                //customerInDb.Address.StateId = customer.Address.StateId;
+                //customerInDb.DayOfWeekPickUpId = customer.DayOfWeekPickUpId;
+                //customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                //customerInDb.IsCurrentCustomer = customer.IsCurrentCustomer;
+                //customerInDb.StartDate = customer.StartDate;
+                //customerInDb.EMailAddress = customer.EMailAddress;
+                //Or use AutoMapper
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
+
     }
 }
