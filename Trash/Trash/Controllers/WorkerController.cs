@@ -24,7 +24,8 @@ namespace Trash.Controllers
         // GET: Worker
         public ActionResult Index()
         {
-            return View();
+            var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
+            return View(workers);
         }
         public ActionResult New()
         {
@@ -37,6 +38,21 @@ namespace Trash.Controllers
             };
             return View("WorkerForm", viewModel);
         }
+        public ActionResult Edit(int id)
+        {
+            var worker = _context.Workers.SingleOrDefault(c => c.Id == id);
+
+            if (worker == null)
+                return HttpNotFound();
+            var viewModel = new WorkerFormViewModel
+            {
+                Worker = worker,
+                ZipCodes = _context.Zipcodes
+            };
+            return View("WorkerForm", viewModel);
+        }
+
+
         [HttpPost]
         public ActionResult Save(Worker worker, Zipcode zipcode)
         {
