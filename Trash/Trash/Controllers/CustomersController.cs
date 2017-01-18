@@ -66,6 +66,27 @@ namespace Trash.Controllers
             };
             return View("CustomerForm", viewModel);
         }
+
+
+        public ViewResult Details(int id)
+        {
+            var customer = _context.Customers.Include(m => m.MembershipType).SingleOrDefault(c => c.Id == id);
+
+            return View(customer);
+        }
+        //public ActionResult Details(int id)
+        //{
+        //    var customer = _context.Customers.Include(m => m.Address.Zipcode).Include(c => c.m.SingleOrDefault(c => c.Id == id);
+        //    var membershipTypes = _context.MembershipTypes;
+        //    var viewModel = new CustomerDetailsViewModel
+        //    {
+        //        Customer = new Customer(),
+        //        MembershipTypes = membershipTypes
+        //    };
+        //    return View("Details", viewModel);
+        //}
+
+
         public ActionResult New()
         {
             var state = _context.States.ToList();

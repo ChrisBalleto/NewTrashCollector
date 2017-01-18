@@ -27,6 +27,21 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
+        public ActionResult Route(int? zipId)
+        {
+            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
+
+            var customers = temporaryCustomers;
+            var customerz = new List<Customer>();
+            foreach (var customer in customers)
+            {
+                if (customer.Address.ZipcodeId == zipId)
+                {
+                    customerz.Add(customer);
+                }
+            }
+            return View(customers);
+        }
         public ActionResult Territory(int? zipId)
         {
             var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
@@ -112,10 +127,6 @@ namespace Trash.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Worker");
-        }
-        public ActionResult Route()
-        {
-            return View();
         }
     }
 }

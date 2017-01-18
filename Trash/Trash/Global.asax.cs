@@ -8,6 +8,9 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using AutoMapper;
+using Trash.App_Start;
+using static System.Net.WebRequestMethods;
 
 namespace Trash
 {
@@ -15,6 +18,7 @@ namespace Trash
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -23,3 +27,4 @@ namespace Trash
         }
     }
 }
+//Http://localhost:21676/Global.asax.cs
