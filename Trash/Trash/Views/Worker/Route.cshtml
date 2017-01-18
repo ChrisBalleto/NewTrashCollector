@@ -23,9 +23,9 @@
         <select multiple id="waypoints">
             @foreach (var customer in Model)
             {
-                for (int i = 1; i > 0; i++)
+                for (int i = 1; i <= Model.Count(); i++)
                 {
-                <option value="@customer.Address.StreetOne , @customer.Address.StreetTwo , @customer.Address.Zipcode.ZipcodeNum">i @customer.LastName </option>
+                <option value="@customer.StreetOne, @customer.StreetTwo , @customer.Zipcode.ZipcodeNum">@i @customer.LastName </option>
                 }
             }
 

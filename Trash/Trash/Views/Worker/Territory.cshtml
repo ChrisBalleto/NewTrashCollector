@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Trash.Models.Customer>
+﻿@model Trash.ViewModels.RouteViewModel
 @{
     ViewBag.Title = "Territory";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,9 +6,9 @@
 
 <h2>Territory</h2>
 
-@Html.ActionLink("Create Route", "Route", "Worker", null , new { @class = "btn btn-primary" })
+@Html.ActionLink("Create Route", "Route", "Worker", new { id = Model.WorkerZipId } , new { @class = "btn btn-primary" })
 
-@if (!Model.Any())
+@if (Model.Customers.Count() == 0)
 {
     <p>There are no Customers on this Route</p>
 }
@@ -24,13 +24,13 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model)
+            @foreach (var customer in Model.Customers)
             {
                 <tr>
                     <td>@customer.LastName</td>
-                    <td>@customer.Address.StreetOne</td>
-                    <td>@customer.Address.StreetTwo</td>
-                    <td>@customer.Address.Zipcode.ZipcodeNum</td>
+                    <td>@customer.StreetOne</td>
+                    <td>@customer.StreetTwo</td>
+                    <td>@customer.Zipcode.ZipcodeNum</td>
 
                 </tr>
             }

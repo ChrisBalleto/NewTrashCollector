@@ -14,10 +14,21 @@ namespace Trash.Models
 
         public string LastName { get; set; }
 
-        public Address Address { get; set; }
+        public string StreetOne { get; set; }
 
-        [Required]
-        public int AddressId { get; set; }
+        public string StreetTwo { get; set; }
+
+        public City City { get; set; }
+
+        public int CityId { get; set; }
+
+        public State State { get; set; }
+
+        public int StateId { get; set; }
+
+        public Zipcode Zipcode { get; set; }
+
+        public int ZipcodeId { get; set; }
 
         public string EMailAddress { get; set; }
 

@@ -27,7 +27,7 @@ else
                 <tr>
                     <td>@worker.LastName</td>
                     <td>@worker.FirstName</td>
-                    <td>@Html.ActionLink(worker.ZipcodeTerritory.ZipcodeNum, "Territory", "Worker", new { id = worker.ZipcodeTerritoryId}, null) </td>
+                    <td>@Html.ActionLink(worker.ZipcodeTerritory.ZipcodeNum, "Territory", "Worker", new { id = worker.ZipcodeTerritory.Id }, null) </td>
                 </tr>
             }
         </tbody>

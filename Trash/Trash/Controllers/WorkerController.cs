@@ -11,7 +11,7 @@ namespace Trash.Controllers
 {
     public class WorkerController : Controller
     {
-        public IEnumerable<Customer> customerZipList;
+        
         private ApplicationDbContext _context;
         public WorkerController()
         {
@@ -28,32 +28,34 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
-        public ActionResult Route(Worker worker)
+        public ActionResult Route(int id)
         {
-
+            var customerZipList = _context.Customers.Include(m => m.Zipcode).ToList();
             
+            var temporaryCustomerList2 = new List<Customer>();
 
 
 
-            //foreach (var customer in customers)
-            //{
-            //    if (customer.Address.ZipcodeId == zipId)
-            //    {
-            //        customerz.Add(customer);
-            //    }
-            //}
-            return View(worker.CustomerList);
+            foreach (var customer in customerZipList)
+            {
+                if (customer.ZipcodeId == id)
+                {
+                    temporaryCustomerList2.Add(customer);
+                }
+            }
+
+            return View(temporaryCustomerList2);
         }
-        public ActionResult Territory(int? zipId)
+        public ActionResult Territory(Worker model)
         {
-            customerZipList = new List<Customer>();
-            customerZipList = _context.Customers.Include(m => m.Address.Zipcode).Include(c => c.Address.City).Include(s => s.Address.State).ToList();
+            var customerZipList = new List<Customer>();
+            customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).ToList();
 
             var customers = customerZipList;
             var customerz = new List<Customer>();
             foreach (var customer in customers)
             {
-                if (customer.Address.ZipcodeId == zipId)
+                if (customer.ZipcodeId == model.Id)
                 {
                     customerz.Add(customer);
                 }
@@ -62,15 +64,17 @@ namespace Trash.Controllers
 
             Worker temporaryWorker = new Worker();
             temporaryWorker.CustomerList = customers;
+          
+            var viewModel = new RouteViewModel
+            {
+
+                Customers = customers,
+                WorkerZipId = model.Id
+            };
+
 
             //customer.ConcatAddress = customer.Address.StreetOne + " " + customer.Address.StreetTwo + " " + customer.Address.City.CityName + "," + customer.Address.State.StateName + " " + customer.Address.Zipcode.ZipcodeNum;
-            //var viewModel = new RouteViewModel
-            //{
-            //    WorkerZip = zipId,
-            //    Customer = customers,
-
-            //};
-            return View(customers);
+            return View("Territory", viewModel);
         }
         public ActionResult New()
         {
