@@ -19,5 +19,7 @@ namespace Trash.Models
         public Zipcode ZipcodeTerritory { get; set; }
 
         public int ZipcodeTerritoryId { get; set; }
+
+        public IEnumerable<Customer> CustomerList { get; set; }
     }
 }

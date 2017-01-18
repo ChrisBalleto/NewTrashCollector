@@ -10,5 +10,6 @@ namespace Trash.Models
         public int Id { get; set; }
 
         public string ZipcodeNum { get; set; }
-}
+
+    }
 }

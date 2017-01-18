@@ -4,21 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.FirstName</h2>
-<h2>@Model.LastName</h2>
+<h2>@Model.FirstName @Model.LastName</h2>
+
 <ul>
-    <li>Address: @Html.DisplayFor(Model => Model.Address.StreetOne)</li>
-    <li>This Month's Bill: @Model.MembershipType.PickUpRate</li>
-    <li>This Month's Bill: @Html.DisplayFor(Model => Model.MembershipType.PickUpRate)*(4)</li>
+    <li>Address: @Model.EMailAddress</li>
+    <li>Address: @Model.StreetOne</li>
+    <li>Address: @Model.StreetTwo.</li>
+    <li>Address: @Model.City.CityName</li>
+    <li>Address: @Model.State.StateName</li>
+    <li>Address: @Model.Zipcode.ZipcodeNum</li>
+    <li>Address: @Model.MembershipType.MembershipName</li>
 
-
-    @*@if (Model.Customer.MembershipType.MembershipName == "Monthly")
+    
+    @if (Model.MembershipType.MembershipName == "Monthly")
     {
-        <li>This Month's Bill: @Model.Customer.MembershipType.PickUpRate * 4</li>
+        <li>@DateTime.Now.Month.ToString("MMM") Bill: @((Model.MembershipType.PickUpRate) * (4.33))</li>
     }
     else
     {
-    <li>This Month's Bill: @Html.DisplayFor(Model => Model.BirthDate)</li>
-    }*@
+        <li>@DateTime.Now.Month.ToString("MMM") Bill: @Model.MembershipType.PickUpRate</li>
+    }
 </ul>
 

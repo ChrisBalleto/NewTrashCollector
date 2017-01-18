@@ -43,20 +43,18 @@ namespace Trash.Controllers
         
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include(m => m.Address.Zipcode).ToList();
+            var customers = _context.Customers.ToList();
             return View(customers);
         }
-        public ActionResult Edit(int id, int addressId)
+        public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-            var address = _context.Addresses.SingleOrDefault(c => c.Id == addressId);
 
             if (customer == null)
                 return HttpNotFound();
             var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
-                Address = customer.Address,
                 Cities = _context.Cities,
                 Zipcodes = _context.Zipcodes,
                 DayOfWeekPickUps = _context.DayOfWeekPickUps,
@@ -67,10 +65,12 @@ namespace Trash.Controllers
             return View("CustomerForm", viewModel);
         }
 
-
+       
         public ViewResult Details(int id)
         {
             var customer = _context.Customers.Include(m => m.MembershipType).SingleOrDefault(c => c.Id == id);
+            //.Include(x => x.Address.CityId).Include(y => y.Address.StateId)
+            //.Include(z => z.Address.ZipcodeId).SingleOrDefault(c => c.Id == id);
 
             return View(customer);
         }
@@ -97,7 +97,7 @@ namespace Trash.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 Customer = new Customer(),
-                Address = new Address(),
+
                 MembershipTypes = membershipTypes,
                 States = state,
                 Cities = city,
@@ -116,7 +116,6 @@ namespace Trash.Controllers
                 var viewModel = new CustomerFormViewModel
                 {
                     Customer = customer,
-                    Address = customer.Address,
                     Cities = _context.Cities.ToList(),
                     Zipcodes = _context.Zipcodes.ToList(),
                     DayOfWeekPickUps = _context.DayOfWeekPickUps.ToList(),
@@ -132,15 +131,16 @@ namespace Trash.Controllers
                 _context.Customers.Add(customer);
             else
             {
-                var customerInDb = _context.Customers.Include(m => m.Address).Single(c => c.Id == customer.Id);
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
                 /*TryUpdateModel(customerInDb); */  //Malicious users can mess-up database
                 customerInDb.FirstName = customer.FirstName;
                 customerInDb.LastName = customer.LastName;
-                customerInDb.Address = customer.Address;
-                customerInDb.Address.City = customer.Address.City;
-                customerInDb.Address.ZipcodeId = customer.Address.ZipcodeId;
-                customerInDb.Address.StateId = customer.Address.StateId;
+                customerInDb.StreetOne = customer.StreetOne;
+                customerInDb.StreetTwo = customer.StreetTwo;
+                customerInDb.City = customer.City;
+                customerInDb.ZipcodeId = customer.ZipcodeId;
+                customerInDb.StateId = customer.StateId;
                 customerInDb.DayOfWeekPickUpId = customer.DayOfWeekPickUpId;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsCurrentCustomer = customer.IsCurrentCustomer;

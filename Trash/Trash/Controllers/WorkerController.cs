@@ -11,6 +11,7 @@ namespace Trash.Controllers
 {
     public class WorkerController : Controller
     {
+        
         private ApplicationDbContext _context;
         public WorkerController()
         {
@@ -27,44 +28,53 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
-        public ActionResult Route(int? zipId)
+        public ActionResult Route(int id)
         {
-            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
+            var customerZipList = _context.Customers.Include(m => m.Zipcode).ToList();
+            
+            var temporaryCustomerList2 = new List<Customer>();
 
-            var customers = temporaryCustomers;
-            var customerz = new List<Customer>();
-            foreach (var customer in customers)
+
+
+            foreach (var customer in customerZipList)
             {
-                if (customer.Address.ZipcodeId == zipId)
+                if (customer.ZipcodeId == id)
                 {
-                    customerz.Add(customer);
+                    temporaryCustomerList2.Add(customer);
                 }
             }
-            return View(customers);
+
+            return View(temporaryCustomerList2);
         }
-        public ActionResult Territory(int? zipId)
+        public ActionResult Territory(Worker model)
         {
-            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
+            var customerZipList = new List<Customer>();
+            customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).ToList();
 
-            var customers = temporaryCustomers;
+            var customers = customerZipList;
             var customerz = new List<Customer>();
             foreach (var customer in customers)
             {
-                if (customer.Address.ZipcodeId == zipId)
+                if (customer.ZipcodeId == model.Id)
                 {
                     customerz.Add(customer);
                 }
             }
+            customers = customerZipList;
+
+            Worker temporaryWorker = new Worker();
+            temporaryWorker.CustomerList = customers;
+          
+            var viewModel = new RouteViewModel
+            {
+
+                Customers = customers,
+                WorkerZipId = model.Id
+            };
 
 
             //customer.ConcatAddress = customer.Address.StreetOne + " " + customer.Address.StreetTwo + " " + customer.Address.City.CityName + "," + customer.Address.State.StateName + " " + customer.Address.Zipcode.ZipcodeNum;
-            //var viewModel = new RouteViewModel
-            //{
-            //    WorkerZip = zipId,
-            //    Customer = customers,
-
-            //};
-            return View(customers);
+            return View("Territory", viewModel);
         }
         public ActionResult New()
         {
