@@ -276,6 +276,11 @@
     <Compile Include="Migrations\201701172325139_gh.Designer.cs">
       <DependentUpon>201701172325139_gh.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Migrations\201701181652216_SeedUsers.cs" />
+    <Compile Include="Migrations\201701181652216_SeedUsers.Designer.cs">
+      <DependentUpon>201701181652216_SeedUsers.cs</DependentUpon>
+=======
     <Compile Include="Migrations\201701181658287_deletedAddresses.cs" />
     <Compile Include="Migrations\201701181658287_deletedAddresses.Designer.cs">
       <DependentUpon>201701181658287_deletedAddresses.cs</DependentUpon>
@@ -283,6 +288,7 @@
     <Compile Include="Migrations\201701181803229_update1.cs" />
     <Compile Include="Migrations\201701181803229_update1.Designer.cs">
       <DependentUpon>201701181803229_update1.cs</DependentUpon>
+>>>>>>> bc1b6942de72413fe556d02bd1a6df0bb7be8bd1
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -372,7 +378,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Home\Fees.cshtml" />
+    <Content Include="Views\Customers\Membership.cshtml" />
     <Content Include="Views\Worker\Index.cshtml" />
     <Content Include="Views\Worker\WorkerForm.cshtml" />
     <Content Include="Views\Worker\Territory.cshtml" />
@@ -451,6 +457,8 @@
     <EmbeddedResource Include="Migrations\201701172325139_gh.resx">
       <DependentUpon>201701172325139_gh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181652216_SeedUsers.resx">
+      <DependentUpon>201701181652216_SeedUsers.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\201701181658287_deletedAddresses.resx">
       <DependentUpon>201701181658287_deletedAddresses.cs</DependentUpon>
     </EmbeddedResource>

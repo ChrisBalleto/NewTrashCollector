@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Trash.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <h3> <b>Memebership Overview</b></h3>
+<ul>
+    <li>Front door trash and recycle pick up service</li>
+    <li>Live a better healthy life</li>
+    <li>No more smelling trash</li>
+    <li>Save time and keep the community clean</li>
+</ul>
+    </div>
+    <div class="col-md-4">
+     =
+    </div>
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <h3> <b>Service Fees</b></h3>
+        <table style="width:75%" height="50" border="1">
+          <tr><td align="center"><b>One Time</b></td><td align="center"><b>Every Weeks</b></td></tr>
+            <tr><td align="center">$10.00</td><td align="center">$8.00</td></tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        Register to become a 
+
+@Html.ActionLink("Member", "Edit", "Customers") 
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+
+
+         

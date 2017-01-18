@@ -40,7 +40,7 @@ namespace Trash.Controllers
 
         //    return View(viewModel);
         //}
-
+        
         public ViewResult Index()
         {
             var customers = _context.Customers.ToList();
@@ -149,6 +149,12 @@ namespace Trash.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Customers");
+        }
+        public ActionResult Membership()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
         }
 
     }

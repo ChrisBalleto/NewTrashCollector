@@ -8,6 +8,7 @@ namespace Trash.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -26,11 +27,6 @@ namespace Trash.Controllers
 
             return View();
         }
-        public ActionResult Fees()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }
