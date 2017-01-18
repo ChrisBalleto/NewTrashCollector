@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201701172325139_gh.Designer.cs">
       <DependentUpon>201701172325139_gh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701181652216_SeedUsers.cs" />
+    <Compile Include="Migrations\201701181652216_SeedUsers.Designer.cs">
+      <DependentUpon>201701181652216_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -365,7 +369,7 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Home\Fees.cshtml" />
+    <Content Include="Views\Customers\Membership.cshtml" />
     <Content Include="Views\Worker\Index.cshtml" />
     <Content Include="Views\Worker\WorkerForm.cshtml" />
     <Content Include="Views\Worker\Territory.cshtml" />
@@ -443,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701172325139_gh.resx">
       <DependentUpon>201701172325139_gh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701181652216_SeedUsers.resx">
+      <DependentUpon>201701181652216_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

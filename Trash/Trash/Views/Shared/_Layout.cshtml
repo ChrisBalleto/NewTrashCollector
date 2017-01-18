@@ -16,16 +16,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </button>       
                 @Html.ActionLink("GYJ Interprise", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Price", "Fees", "Home")</li>
+                    <li>@Html.ActionLink("Membership", "Membership", "Customers")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Route", "Route", "Worker")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
