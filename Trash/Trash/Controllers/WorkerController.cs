@@ -11,6 +11,7 @@ namespace Trash.Controllers
 {
     public class WorkerController : Controller
     {
+        public IEnumerable<Customer> customerZipList;
         private ApplicationDbContext _context;
         public WorkerController()
         {
@@ -27,26 +28,28 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
-        public ActionResult Route(int? zipId)
+        public ActionResult Route(Worker worker)
         {
-            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
 
-            var customers = temporaryCustomers;
-            var customerz = new List<Customer>();
-            foreach (var customer in customers)
-            {
-                if (customer.Address.ZipcodeId == zipId)
-                {
-                    customerz.Add(customer);
-                }
-            }
-            return View(customers);
+            
+
+
+
+            //foreach (var customer in customers)
+            //{
+            //    if (customer.Address.ZipcodeId == zipId)
+            //    {
+            //        customerz.Add(customer);
+            //    }
+            //}
+            return View(worker.CustomerList);
         }
         public ActionResult Territory(int? zipId)
         {
-            var temporaryCustomers = _context.Customers.Include(m => m.Address.Zipcode).Include(m => m.Address.City).Include(m => m.Address.State).ToList();
+            customerZipList = new List<Customer>();
+            customerZipList = _context.Customers.Include(m => m.Address.Zipcode).Include(c => c.Address.City).Include(s => s.Address.State).ToList();
 
-            var customers = temporaryCustomers;
+            var customers = customerZipList;
             var customerz = new List<Customer>();
             foreach (var customer in customers)
             {
@@ -55,7 +58,10 @@ namespace Trash.Controllers
                     customerz.Add(customer);
                 }
             }
+            customers = customerZipList;
 
+            Worker temporaryWorker = new Worker();
+            temporaryWorker.CustomerList = customers;
 
             //customer.ConcatAddress = customer.Address.StreetOne + " " + customer.Address.StreetTwo + " " + customer.Address.City.CityName + "," + customer.Address.State.StateName + " " + customer.Address.Zipcode.ZipcodeNum;
             //var viewModel = new RouteViewModel

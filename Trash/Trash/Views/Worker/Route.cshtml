@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Trash.Models.Worker>
+﻿@model IEnumerable<Trash.Models.Customer>
 @{
     ViewBag.Title = "Route";
 }
@@ -21,10 +21,18 @@
         <b>Customers Location</b> 
         
         <select multiple id="waypoints">
-            <option value="1238 E brady street, 53202">Customer One</option>
+            @foreach (var customer in Model)
+            {
+                for (int i = 1; i > 0; i++)
+                {
+                <option value="@customer.Address.StreetOne , @customer.Address.StreetTwo , @customer.Address.Zipcode.ZipcodeNum">i @customer.LastName </option>
+                }
+            }
+
+            @*<option value="1238 E brady street, 53202">Customer One</option>
             <option value="1728 N Humboldt Ave, 53202">Customer Two</option>
             <option value="1101 E Brady St, 53202">Customer Three</option>
-            <option value="1759 N Franklin, 53202">Customer Four</option>
+            <option value="1759 N Franklin, 53202">Customer Four</option>*@
         </select>
 
         <b>End:</b>
