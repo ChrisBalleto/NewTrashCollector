@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Territory</h2>
+<h2>Customers in Zip Territory</h2>
 
 @Html.ActionLink("Create Route", "Route", "Worker", new { id = Model.WorkerZipId } , new { @class = "btn btn-primary" })
 
@@ -17,10 +17,14 @@ else
     <table class="table table-condensed table-hover">
         <thead>
             <tr>
-                <th>Customer Last Name</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Pick-Up Day</th>
                 <th>Street 1</th>
                 <th>Street 2</th>
-                <th>Zip-Code</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
             </tr>
         </thead>
         <tbody>
@@ -28,10 +32,13 @@ else
             {
                 <tr>
                     <td>@customer.LastName</td>
+                    <td>@customer.FirstName</td>
+                    <td>@customer.DayOfWeekPickUp.DayOfWeek</td>
                     <td>@customer.StreetOne</td>
                     <td>@customer.StreetTwo</td>
+                    <td>@customer.City.CityName</td>
+                    <td>@customer.State.StateName</td>
                     <td>@customer.Zipcode.ZipcodeNum</td>
-
                 </tr>
             }
         </tbody>
