@@ -8,19 +8,20 @@
 
 <ul>
     <li>Address: @Model.EMailAddress</li>
-    <li>Address: @Model.StreetOne</li>
-    <li>Address: @Model.StreetTwo.</li>
-    <li>Address: @Model.City.CityName</li>
-    <li>Address: @Model.State.StateName</li>
-    <li>Address: @Model.Zipcode.ZipcodeNum</li>
-    <li>Address: @Model.MembershipType.MembershipName</li>    
+    <li>Street 1: @Model.StreetOne</li>
+    <li>Street 2: @Model.StreetTwo</li>
+    <li>City: @Model.City.CityName</li>
+    <li>State: @Model.State.StateName</li>
+    <li>Zipcode: @Model.Zipcode.ZipcodeNum</li>
+    <li>Membership Type: @Model.MembershipType.MembershipName</li>
+    <br />
     @if (Model.MembershipType.MembershipName == "Monthly")
     {
-        <li>@DateTime.Now.Month.ToString("MMM") Bill: @((Model.MembershipType.PickUpRate) * (4.33))</li>
+        <li>@DateTime.Now.ToString("MMMM") Bill: $@((Model.MembershipType.PickUpRate) * (4.33))</li>
     }
     else
     {
-        <li>@DateTime.Now.Month.ToString("MMM") Bill: @Model.MembershipType.PickUpRate</li>
+        <li>@DateTime.Now.ToString("MMMM") Bill: $@Model.MembershipType.PickUpRate</li>
     }
 </ul>
 

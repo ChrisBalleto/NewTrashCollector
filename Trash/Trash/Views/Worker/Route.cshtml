@@ -16,29 +16,31 @@
     <div>
         <b>Start Location:</b>
         <select id="start">
-            <option value="333 N Plankinton Ave, 53203">GYJ Enterprise</option>
+            <option value="333 N Plankinton Ave, 53203">GYJ Enterprise HQ</option>
         </select>
         <b>Customers Location</b> 
         
         <select multiple id="waypoints">
+            @{int i = 1;}
             @foreach (var customer in Model)
             {
-                for (int i = 1; i <= Model.Count(); i++)
-                {
-                <option value="@customer.StreetOne, @customer.StreetTwo , @customer.Zipcode.ZipcodeNum">@i @customer.LastName </option>
-                }
+                    
+                    <option value="@customer.StreetOne, @customer.StreetTwo , @customer.Zipcode.ZipcodeNum">@i @customer.LastName </option>
+                    i++;
             }
         </select>
 
         <b>End:</b>
         <select id="end">
+            @{i = 1;}
             @foreach (var customer in Model)
             {
-                for (int i = 1; i <= Model.Count(); i++)
-                {
+                
                     <option value="@customer.StreetOne, @customer.StreetTwo , @customer.Zipcode.ZipcodeNum">@i @customer.LastName </option>
-                }
+                i++;
+
             }
+            <option value="333 N Plankinton Ave, 53203">GYJ Enterprise HQ</option>
 >
         </select>
         <input type="submit" id="submit">
