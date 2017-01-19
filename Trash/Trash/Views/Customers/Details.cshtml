@@ -10,6 +10,10 @@
     
     <div class="col-md-4">
         <h2>@Model.FirstName @Model.LastName</h2>
+        <br />
+        @Html.ActionLink("Add Vacation", "AddVacation", "Customers", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        <br />
+        <br />
         <ul>
             <li>Address: @Model.EMailAddress</li>
             <li>Street 1: @Model.StreetOne</li>

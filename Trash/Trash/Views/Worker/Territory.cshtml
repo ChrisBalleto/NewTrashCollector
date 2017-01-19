@@ -6,14 +6,15 @@
 
 <h2>Customers in Zip Territory</h2>
 
-@Html.ActionLink("Create Route", "Route", "Worker", new { id = Model.WorkerZipId} , new { @class = "btn btn-primary" })
+
 
 @if (Model.Customers.Count() == 0)
 {
-    <p>There are no Customers on this Route</p>
+    <p>There are no Customers in this Zipcode</p>
 }
 else
 {
+    @Html.ActionLink("Create Route", "Route", "Worker", new { id = Model.WorkerZipId }, new { @class = "btn btn-primary" })
     <table class="table table-condensed table-hover">
         <thead>
             <tr>

@@ -46,6 +46,8 @@ namespace Trash.Models
 
         public string ConcatAddress { get; set; }
 
+        public IEnumerable<Vacation> Vacations { get; set; }
+
 
     }
 }

@@ -23,24 +23,6 @@ namespace Trash.Controllers
             _context.Dispose();
         }
 
-        //public ViewResult Index(int id, int zipCodeId)
-        //{
-
-        //    var customers = _context.Customers.SingleOrDefault(c => c.Id == id);
-        //    //var zipCode = _context.Zipcodes.SingleOrDefault(c => c.Id == zipCodeId)
-
-        //    var viewModel = new CustomerFormViewModel
-        //    {
-        //        Customer = customers,
-        //        //Zipcodes = zipCode
-
-        //    };
-
-
-
-        //    return View(viewModel);
-        //}
-        
         public ViewResult Index()
         {
             var customers = _context.Customers.Include(m => m.MembershipType).Include(z => z.City).Include(y => y.State).Include(d =>d.DayOfWeekPickUp).Include(l => l.Zipcode).ToList();
@@ -73,18 +55,19 @@ namespace Trash.Controllers
 
             return View(customer);
         }
-        //public ActionResult Details(int id)
-        //{
-        //    var customer = _context.Customers.Include(m => m.Address.Zipcode).Include(c => c.m.SingleOrDefault(c => c.Id == id);
-        //    var membershipTypes = _context.MembershipTypes;
-        //    var viewModel = new CustomerDetailsViewModel
-        //    {
-        //        Customer = new Customer(),
-        //        MembershipTypes = membershipTypes
-        //    };
-        //    return View("Details", viewModel);
-        //}
+        public ActionResult AddVacation(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
 
+            };
+
+            return View("AddVacation", viewModel);
+        }
 
         public ActionResult New()
         {
@@ -105,6 +88,10 @@ namespace Trash.Controllers
 
             };
             return View("CustomerForm", viewModel);
+        }
+        public ActionResult SaveVacation(Vacation vacation)
+        {
+            return View("Index");
         }
 
         [HttpPost]

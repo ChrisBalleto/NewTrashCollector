@@ -14,6 +14,7 @@ namespace Trash.ViewModels
         public IEnumerable<State> States { get; set; }
         public IEnumerable<Zipcode> Zipcodes { get; set; }
         public IEnumerable<DayOfWeekPickUp> DayOfWeekPickUps { get; set; } 
+        public Vacation Vacation { get; set; }
 
     }
 }
