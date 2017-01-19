@@ -13,9 +13,7 @@
     <li>Address: @Model.City.CityName</li>
     <li>Address: @Model.State.StateName</li>
     <li>Address: @Model.Zipcode.ZipcodeNum</li>
-    <li>Address: @Model.MembershipType.MembershipName</li>
-
-    
+    <li>Address: @Model.MembershipType.MembershipName</li>    
     @if (Model.MembershipType.MembershipName == "Monthly")
     {
         <li>@DateTime.Now.Month.ToString("MMM") Bill: @((Model.MembershipType.PickUpRate) * (4.33))</li>

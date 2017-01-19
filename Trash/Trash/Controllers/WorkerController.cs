@@ -49,7 +49,7 @@ namespace Trash.Controllers
         public ActionResult Territory(Worker model)
         {
             var customerZipList = new List<Customer>();
-            customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).ToList();
+            customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).Include(d => d.DayOfWeekPickUp).ToList();
 
             var customers = customerZipList;
             var customerz = new List<Customer>();

@@ -68,9 +68,8 @@ namespace Trash.Controllers
        
         public ViewResult Details(int id)
         {
-            var customer = _context.Customers.Include(m => m.MembershipType).SingleOrDefault(c => c.Id == id);
-            //.Include(x => x.Address.CityId).Include(y => y.Address.StateId)
-            //.Include(z => z.Address.ZipcodeId).SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(m => m.MembershipType).Include(z => z.City).Include(y => y.State)
+            .Include(z => z.Zipcode).SingleOrDefault(c => c.Id == id);
 
             return View(customer);
         }
