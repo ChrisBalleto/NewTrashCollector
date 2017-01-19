@@ -15,9 +15,10 @@
     <li>Zipcode: @Model.Zipcode.ZipcodeNum</li>
     <li>Membership Type: @Model.MembershipType.MembershipName</li>
     <br />
-    @if (Model.MembershipType.MembershipName == "Monthly")
+    @if (Model.MembershipType.MembershipName == "Weekly")
     {
-        <li>@DateTime.Now.ToString("MMMM") Bill: $@((Model.MembershipType.PickUpRate) * (4.33))</li>
+        var averageWeeksPerMonth = 4.33;
+        <li>@DateTime.Now.ToString("MMMM") Bill: $@((Model.MembershipType.PickUpRate) * (averageWeeksPerMonth))</li>
     }
     else
     {
