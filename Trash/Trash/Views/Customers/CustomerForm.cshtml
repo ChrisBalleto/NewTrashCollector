@@ -59,6 +59,7 @@
                         @Html.TextBoxFor(m => m.Customer.StartDate, new { @class = "form-control" })
                     </label>
                 </div>
+                @Html.ActionLink("Add Vacation", "AddVacation", "Customer", new { @class = "btn btn-primary" })
                 <div class="checkbox">
                     <label>
                         @Html.CheckBoxFor(m => m.Customer.IsCurrentCustomer) Current Customer?

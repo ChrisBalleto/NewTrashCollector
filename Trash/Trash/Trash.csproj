@@ -379,6 +379,7 @@
     <Content Include="Views\Worker\WorkerForm.cshtml" />
     <Content Include="Views\Worker\Territory.cshtml" />
     <Content Include="Views\Worker\Route.cshtml" />
+    <Content Include="Views\Worker\DayOfWeekTerritory.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

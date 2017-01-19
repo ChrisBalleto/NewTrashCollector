@@ -28,10 +28,57 @@ namespace Trash.Controllers
             var workers = _context.Workers.Include(m => m.ZipcodeTerritory).ToList();
             return View(workers);
         }
-        public ActionResult Route(int id)
+        public ActionResult DoWRoute(int id, int zipId)
+        {
+            var customerZipList = _context.Customers.Include(m => m.Zipcode).Include(d => d.DayOfWeekPickUp).ToList();
+
+            var temporaryCustomerList2 = new List<Customer>();
+
+
+
+            foreach (var customer in customerZipList)
+            {
+                if (customer.ZipcodeId == zipId && customer.DayOfWeekPickUpId == id)
+                {
+                    temporaryCustomerList2.Add(customer);
+                }
+            }
+
+            return View("Route", temporaryCustomerList2);
+        }
+        public ActionResult DoWTerritory(int id, int zipId)
+        {
+            var customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).Include(d => d.DayOfWeekPickUp).ToList();
+
+            var customers = customerZipList;
+            var customerz = new List<Customer>();
+            foreach (var customer in customers)
+            {
+                if (customer.ZipcodeId == zipId && customer.DayOfWeekPickUpId == id)
+                {
+                    customerz.Add(customer);
+                }
+            }
+            customers = customerZipList;
+
+            Worker temporaryWorker = new Worker();
+            temporaryWorker.CustomerList = customers;
+
+            var viewModel = new RouteViewModel
+            {
+                DayOfWeekId = id,
+                Customers = customerz,
+                WorkerZipId = zipId
+            };
+
+
+  
+            return View("DayOfWeekTerritory", viewModel);
+        }
+            public ActionResult Route(int id)
         {
             var customerZipList = _context.Customers.Include(m => m.Zipcode).ToList();
-            
+
             var temporaryCustomerList2 = new List<Customer>();
 
 
@@ -46,7 +93,8 @@ namespace Trash.Controllers
 
             return View(temporaryCustomerList2);
         }
-        public ActionResult Territory(Worker model)
+
+        public ActionResult Territory(Zipcode zipId, Worker id)
         {
             var customerZipList = _context.Customers.Include(m => m.Zipcode).Include(c => c.City).Include(s => s.State).Include(d => d.DayOfWeekPickUp).ToList();
 
@@ -54,7 +102,7 @@ namespace Trash.Controllers
             var customerz = new List<Customer>();
             foreach (var customer in customers)
             {
-                if (customer.ZipcodeId == model.Id)
+                if (customer.ZipcodeId == zipId.Id)
                 {
                     customerz.Add(customer);
                 }
@@ -68,7 +116,7 @@ namespace Trash.Controllers
             {
                
                 Customers = customerz,
-                WorkerZipId = model.Id
+                WorkerZipId = zipId.Id
             };
 
 

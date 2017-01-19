@@ -43,7 +43,7 @@ namespace Trash.Controllers
         
         public ViewResult Index()
         {
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Include(m => m.MembershipType).Include(z => z.City).Include(y => y.State).Include(d =>d.DayOfWeekPickUp).Include(l => l.Zipcode).ToList();
             return View(customers);
         }
         public ActionResult Edit(int id)
@@ -148,7 +148,7 @@ namespace Trash.Controllers
                 //Or use AutoMapper
             }
             _context.SaveChanges();
-            return RedirectToAction("Index", "Customers");
+            return RedirectToAction("Details", customer);
         }
         public ActionResult Membership()
         {
